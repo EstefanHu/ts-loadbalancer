@@ -63,26 +63,23 @@ exports.create = create;
 const findByEmail = (user_email) => __awaiter(void 0, void 0, void 0, function* () {
     const allUsers = yield (0, exports.findAll)();
     const getUser = allUsers.find(result => user_email === result.email);
-    if (!getUser) {
+    if (!getUser)
         return null;
-    }
     return getUser;
 });
 exports.findByEmail = findByEmail;
 const comparePassword = (email, supplied_password) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield (0, exports.findByEmail)(email);
     const decryptPassword = yield bcryptjs_1.default.compare(supplied_password, user.password);
-    if (!decryptPassword) {
+    if (!decryptPassword)
         return null;
-    }
     return user;
 });
 exports.comparePassword = comparePassword;
 const update = (id, updateValues) => __awaiter(void 0, void 0, void 0, function* () {
     const userExists = yield (0, exports.findOne)(id);
-    if (!userExists) {
+    if (!userExists)
         return null;
-    }
     if (updateValues.password) {
         const salt = yield bcryptjs_1.default.genSalt(10);
         const newPass = yield bcryptjs_1.default.hash(updateValues.password, salt);
@@ -95,9 +92,8 @@ const update = (id, updateValues) => __awaiter(void 0, void 0, void 0, function*
 exports.update = update;
 const remove = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield (0, exports.findOne)(id);
-    if (!user) {
+    if (!user)
         return null;
-    }
     delete users[id];
     saveUsers();
 });
