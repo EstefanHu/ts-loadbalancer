@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express"
 import { Product, UnitProduct } from "./products.interface"
-import * as database from "./product.database"
+import * as database from "./products.database"
 import { StatusCodes } from "http-status-codes"
 
 export const productRouter = express.Router()
