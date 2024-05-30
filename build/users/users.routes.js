@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const http_status_codes_1 = require("http-status-codes");
-const database = __importStar(require("./user.database"));
+const database = __importStar(require("./users.database"));
 exports.userRouter = express_1.default.Router();
 exports.userRouter.get("/users", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

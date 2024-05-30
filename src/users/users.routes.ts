@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express"
-import { UnitUser, User } from "./user.interface"
+import { UnitUser, User } from "./users.interface"
 import { StatusCodes } from "http-status-codes"
-import * as database from "./user.database"
+import * as database from "./users.database"
 
 export const userRouter = express.Router()
 
@@ -58,7 +58,6 @@ userRouter.post("/login", async (req: Request, res: Response) => {
 
 
 userRouter.put('/user/:id', async (req: Request, res: Response) => {
-
 	try {
 		const { username, email, password } = req.body
 		const getUser = await database.findOne(req.params.id)

@@ -30,6 +30,8 @@ const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
+const users_routes_1 = require("./users/users.routes");
+const products_routes_1 = require("./products/products.routes");
 dotenv.config();
 if (!process.env.port) {
     console.log('No port value specified...');
@@ -40,6 +42,8 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cors_1.default)());
 app.use((0, helmet_1.default)());
+app.use('/', users_routes_1.userRouter);
+app.use('/', products_routes_1.productRouter);
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
